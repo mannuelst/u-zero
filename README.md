@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# uZero
 
-## Getting Started
+## Descrição do Projeto
+Este é um projeto de uma aplicação frontend para gerenciamento de usuários, desenvolvida usando React, TypeScript, Next.js, Redux Toolkit (RTK Query) para o gerenciamento de estado e consumo de APIs.
 
-First, run the development server:
+## Funcionalidades Requeridas
+1. **Listar Usuários**:
+   - Consumir uma API REST para listar os usuários.
+   - Exibir os usuários em uma tabela com colunas de nome, e-mail e ações (editar e deletar).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+2. **Criar Usuário**:
+   - Implementar um formulário para adicionar novos usuários.
+   - Os campos do formulário devem incluir: nome, e-mail e cargo (role).
+   - Ao enviar o formulário, o usuário deve ser adicionado à lista consumindo a API.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. **Editar Usuário**:
+   - Permitir editar as informações de um usuário existente.
+   - O formulário de edição deve ser populado com os dados do usuário selecionado.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+4. **Deletar Usuário**:
+   - Permitir deletar um usuário da lista.
+   - Exibir um modal de confirmação antes de proceder com a exclusão.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+5. **Busca de Usuários**:
+   - Implementar um campo de busca para filtrar os usuários por nome ou e-mail.
 
-## Learn More
+## Requisitos Técnicos
+1. **React e Next.js**:
+   - A aplicação deve ser criada usando Next.js para garantir renderização do lado do servidor (SSR) quando apropriado.
 
-To learn more about Next.js, take a look at the following resources:
+2. **TypeScript**:
+   - O projeto deve ser totalmente tipado com TypeScript.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. **Redux Toolkit (RTK Query)**:
+   - Utilizar RTK Query para consumir e gerenciar os dados da API de maneira eficiente.
+   - Gerenciar o estado global da aplicação (usuários) utilizando Redux Toolkit.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+4. **Componentização**:
+   - Aplicar boas práticas de componentização e reutilização de código.
 
-## Deploy on Vercel
+5. **Design Responsivo**:
+   - A interface deve ser responsiva e funcional em dispositivos móveis e desktop.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+6. **Validação de Formulários**:
+   - Utilizar validação nos formulários (por exemplo, Yup ou outra biblioteca).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Instruções Finais
+- A API pode ser simulada usando a ferramenta JSONPlaceholder (https://jsonplaceholder.typicode.com/) ou outra de sua escolha.
+- O código deve estar bem organizado e seguir boas práticas de desenvolvimento, como o uso de hooks, separação de responsabilidades e manipulação eficiente de estados.
+- Fazer uso de commit frequentes para demonstrar a abordagem incremental no desenvolvimento.
+
+## Critérios de Avaliação
+- Implementação correta das funcionalidades.
+- Uso adequado de TypeScript.
+- Boa componentização e reutilização de código.
+- Gerenciamento eficiente de estados com Redux Toolkit e RTK Query.
+- Qualidade do código (organização, legibilidade, uso de boas práticas).
+- Testes de unidade (opcional, mas será um diferencial).

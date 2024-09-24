@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "johndoe",
+      "name": "John Doe",
+      "email": "john@example.com",
+      "role": "admin",
+      "biography": "Hi, I'm John Doe. I'm an admin user."
+    },
+    {
+      "id": 2,
+      "username": "janesmith",
+      "name": "Jane Smith",
+      "email": "jane@example.com",
+      "role": "user",
+      "biography": "Hello, I'm Jane Smith. I'm a regular user."
+    },
+    {
+      "id": 3,
+      "username": "bobjohnson",
+      "name": "Bob Johnson",
+      "email": "bob@example.com",
+      "role": "user",
+      "biography": "Hi, I'm Bob Johnson. I'm also a regular user."
+    }
+  ]
+}
