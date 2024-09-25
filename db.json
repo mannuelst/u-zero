@@ -23,6 +23,29 @@
       "email": "bob@example.com",
       "role": "user",
       "biography": "Hi, I'm Bob Johnson. I'm also a regular user."
+    },
+    {
+      "id": "9d3e",
+      "username": "bob2johnson",
+      "name": "Bob Johnson",
+      "email": "bob1@example.com",
+      "role": "user",
+      "biography": "Hi, I'm Bob Johnson. I'm also a regular user."
+    },
+    {
+      "id": "01a1",
+      "username": "bob2jhnson",
+      "name": "Bob Johnson drogon ",
+      "email": "bob1@example.com",
+      "role": "user",
+      "biography": "Hi, I'm Bob Johnson. I'm also a regular user."
+    },
+    {
+      "id": "e3e4",
+      "name": "Bob Johnson",
+      "email": "bob1@example.com",
+      "role": "user",
+      "biography": "Hi, I'm Bob Johnson. I'm also a regular user."
     }
   ]
 }

@@ -3,16 +3,24 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "run-p dev:api dev:next",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "start:api": "json-server --watch db.json --port 3333"
+    "dev:api": "json-server --watch db.json --port 3333",
+    "dev:next": "next dev"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.9.0",
+    "@reduxjs/toolkit": "^2.2.7",
+    "axios": "^1.7.7",
     "next": "14.2.13",
+    "npm-run-all": "^4.1.5",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-hook-form": "^7.53.0",
+    "sonner": "^1.5.0",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@types/node": "^20",
