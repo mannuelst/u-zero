@@ -1,4 +1,5 @@
 import { api } from "@/lib/axios";
+import { redirect } from "next/navigation";
 //TODO: Refactor(don't forget)
 export async function getUsers() {
 
@@ -24,12 +25,20 @@ export async function updateUser() {
   return data
 }
 
-export async function deleteUsers(id: string) {
+export async function deleteUser(formData: FormData) {
+  const id = formData.get("id")
+  console.log("id: ", id)
+  try {
 
-  const { data } = await api.delete(`/${id}`)
-  console.log("data: ", data)
+    await api.delete(`/${id}`)
+  } catch (error) {
+    throw new Error("Falha o efectuar estação")
 
-  return data
+  }
+
+  redirect("/users")
+
+
 }
 
 export async function getUserDetails(id: string) {

@@ -1,7 +1,7 @@
 {
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "username": "johndoe",
       "name": "John Doe",
       "email": "john@example.com",
@@ -9,15 +9,7 @@
       "biography": "Hi, I'm John Doe. I'm an admin user."
     },
     {
-      "id": 2,
-      "username": "janesmith",
-      "name": "Jane Smith",
-      "email": "jane@example.com",
-      "role": "user",
-      "biography": "Hello, I'm Jane Smith. I'm a regular user."
-    },
-    {
-      "id": 3,
+      "id": "3",
       "username": "bobjohnson",
       "name": "Bob Johnson",
       "email": "bob@example.com",

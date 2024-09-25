@@ -13,7 +13,7 @@ export default async function UserPage() {
               <p>Nome: <span className="font-bold">{item.name}</span></p>
               <p>@<span>{item.username}</span></p>
               <p>Email: <span>{item.email}</span></p>
-              <Link href={`/users/${item.id}/`}>Ver detalhes</Link>
+              <Link href={`/users/${item.id}/`} className="bg-blue-600 text-white px-2 py-1.5">Ver detalhes</Link>
             </li>
           ))}
 
