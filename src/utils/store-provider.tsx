@@ -1,18 +1,9 @@
 'use client'
-import { AppStore, makeStore } from '@/lib/redux/store'
-import { useRef } from 'react'
+import { store } from '@/lib/redux/store'
 import { Provider } from 'react-redux'
+import { ProviderProp } from './definitions'
 
-export default function StoreProvider({
-  children,
-}: {
-  children: React.ReactNode
-}) {
-  const storeRef = useRef<AppStore>()
-  if (!storeRef.current) {
-    // Create the store instance the first time this renders
-    storeRef.current = makeStore()
-  }
+export default function StoreProvider({ children }: Readonly<ProviderProp>) {
 
-  return <Provider store={storeRef.current}>{children}</Provider>
-}
+
+  return 

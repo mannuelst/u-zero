@@ -1,3 +1,4 @@
+import { getUser } from "@/actions";
 import Link from "next/link";
 
 export default async function LoginPage() {
@@ -7,7 +8,7 @@ export default async function LoginPage() {
       <header className="font-bold text-2xl border-gray-500/50 border-b">U-zero</header>
       <div className="flex flex-col gap-3 items-center w-[600]">
         <h2 className="font-bold">Login</h2>
-        <form action=""
+        <form action={getUser}
           className="space-y-4 w-full border flex flex-col p-2 rounded-md">
           <div className="flex flex-col gap-1">
 
@@ -15,7 +16,7 @@ export default async function LoginPage() {
             <input type="email"
               name="email"
               id="email"
-              placeholder="@"
+              placeholder="email@example.com"
               className="bg-gray-200 border rounded-md outline-none px-2 py-1.5" />
           </div>
           <button

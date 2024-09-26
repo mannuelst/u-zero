@@ -1,12 +1,16 @@
+"use server"
+
 import { api } from "@/lib/axios";
+import { User } from "@/utils/definitions";
 import { redirect } from "next/navigation";
 //TODO: Refactor(don't forget)
-export async function getUsers() {
+export async function getUsers(): Promise<User[]> {
 
   const { data } = await api.get("/")
-  console.log("data: ", data)
-
-  return data
+  if (!data) {
+    return []
+  }
+  return data.data
 }
 
 export async function createUser(formData: FormData) {
@@ -47,3 +51,17 @@ export async function getUserDetails(id: string) {
 
   return data
 }
+
+
+
+export async function getUser(formData: FormData) {
+  const email = formData.get("email")
+
+  const { data: [user] } = await api.get(`/users?email=${email}`)
+  if (!user) {
+    throw new Error("Usuário não encontrado!")
+  }
+  redirect("/users")
+  //return user
+}
+//http://localhost:3333/users?email=admin@email.com
