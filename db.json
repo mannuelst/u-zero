@@ -1,43 +1,28 @@
 {
   "users": [
     {
-      "id": "1",
-      "username": "johndoe",
-      "name": "John Doe",
-      "email": "john@example.com",
-      "role": "admin",
-      "biography": "Hi, I'm John Doe. I'm an admin user."
-    },
-    {
-      "id": "3",
-      "username": "bobjohnson",
-      "name": "Bob Johnson",
-      "email": "bob@example.com",
-      "role": "user",
-      "biography": "Hi, I'm Bob Johnson. I'm also a regular user."
-    },
-    {
       "id": "9d3e",
-      "username": "bob2johnson",
+      "job": "SW Dev",
       "name": "Bob Johnson",
-      "email": "bob1@example.com",
+      "email": "bj@email.com",
       "role": "user",
-      "biography": "Hi, I'm Bob Johnson. I'm also a regular user."
+      "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "
     },
     {
       "id": "01a1",
-      "username": "bob2jhnson",
-      "name": "Bob Johnson drogon ",
-      "email": "bob1@example.com",
+      "job": "UI/UX Designer",
+      "name": "Zack Zoe",
+      "email": "2z@example.com",
       "role": "user",
-      "biography": "Hi, I'm Bob Johnson. I'm also a regular user."
+      "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "
     },
     {
-      "id": "e3e4",
-      "name": "Bob Johnson",
-      "email": "bob1@example.com",
-      "role": "user",
-      "biography": "Hi, I'm Bob Johnson. I'm also a regular user."
+      "id": "5f2b",
+      "job": "Manager",
+      "name": "John Doe",
+      "email": "admin@email.com",
+      "role": "admin",
+      "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
     }
   ]
 }
