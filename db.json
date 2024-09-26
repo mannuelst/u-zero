@@ -1,28 +1,137 @@
 {
   "users": [
     {
-      "id": "9d3e",
-      "job": "SW Dev",
-      "name": "Bob Johnson",
-      "email": "bj@email.com",
-      "role": "user",
-      "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "
+      "id": "3b9f",
+      "job": "Analista",
+      "name": "Carlos Oliveira",
+      "email": "carlos.o@email.com",
+      "role": "user"
     },
     {
-      "id": "01a1",
-      "job": "UI/UX Designer",
-      "name": "Zack Zoe",
-      "email": "2z@example.com",
-      "role": "user",
-      "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "
+      "id": "2e4d",
+      "job": "Gerente",
+      "name": "Ana Santos",
+      "email": "ana.s@email.com",
+      "role": "admin"
     },
     {
-      "id": "5f2b",
-      "job": "Manager",
-      "name": "John Doe",
-      "email": "admin@email.com",
-      "role": "admin",
-      "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+      "id": "8h6k",
+      "job": "Desenvolvedor",
+      "name": "Pedro Almeida",
+      "email": "pedro.a@email.com",
+      "role": "user"
+    },
+    {
+      "id": "5m7n",
+      "job": "Marketing",
+      "name": "Juliana Costa",
+      "email": "juliana.c@email.com",
+      "role": "user"
+    },
+    {
+      "id": "1p3q",
+      "job": "RH",
+      "name": "Fernando Martins",
+      "email": "fernando.m@email.com",
+      "role": "admin"
+    },
+    {
+      "id": "9r2s",
+      "job": "Suporte",
+      "name": "Lúcia Ferreira",
+      "email": "lucia.f@email.com",
+      "role": "user"
+    },
+    {
+      "id": "4t6u",
+      "job": "Vendas",
+      "name": "Ricardo Sousa",
+      "email": "ricardo.s@email.com",
+      "role": "user"
+    },
+    {
+      "id": "7v9w",
+      "job": "Contador",
+      "name": "Mariana Lima",
+      "email": "mariana.l@email.com",
+      "role": "user"
+    },
+    {
+      "id": "2x4y",
+      "job": "Diretor",
+      "name": "Paulo Rodrigues",
+      "email": "paulo.r@email.com",
+      "role": "admin"
+    },
+    {
+      "id": "6z8a",
+      "job": "Estagiário",
+      "name": "Camila Nunes",
+      "email": "camila.n@email.com",
+      "role": "user"
+    },
+    {
+      "id": "3b5c",
+      "job": "Advogado",
+      "name": "Gabriel Mendes",
+      "email": "gabriel.m@email.com",
+      "role": "user"
+    },
+    {
+      "id": "8d1e",
+      "job": "Secretária",
+      "name": "Isabela Freitas",
+      "email": "isabela.f@email.com",
+      "role": "user"
+    },
+    {
+      "id": "5f7g",
+      "job": "Engenheiro",
+      "name": "Lucas Carvalho",
+      "email": "lucas.c@email.com",
+      "role": "user"
+    },
+    {
+      "id": "9h2i",
+      "job": "Arquiteto",
+      "name": "Beatriz Gomes",
+      "email": "beatriz.g@email.com",
+      "role": "user"
+    },
+    {
+      "id": "1j3k",
+      "job": "Coordenador",
+      "name": "Rafaela Pereira",
+      "email": "rafaela.p@email.com",
+      "role": "admin"
+    },
+    {
+      "id": "4l6m",
+      "job": "Analista Financeiro",
+      "name": "Thiago Barbosa",
+      "email": "thiago.b@email.com",
+      "role": "user"
+    },
+    {
+      "id": "7n9o",
+      "job": "Recepcionista",
+      "name": "Amanda Castro",
+      "email": "amanda.c@email.com",
+      "role": "user"
+    },
+    {
+      "id": "2p4q",
+      "job": "Consultor",
+      "name": "Daniel Teixeira",
+      "email": "daniel.t@email.com",
+      "role": "user"
+    },
+    {
+      "id": "6r8s",
+      "job": "Gerente de Projetos",
+      "name": "Larissa Santos",
+      "email": "larissa.s@email.com",
+      "role": "admin"
     }
   ]
 }

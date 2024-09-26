@@ -14,6 +14,7 @@
     "@hookform/resolvers": "^3.9.0",
     "@reduxjs/toolkit": "^2.2.7",
     "axios": "^1.7.7",
+    "lucide-react": "^0.446.0",
     "next": "14.2.13",
     "npm-run-all": "^4.1.5",
     "react": "^18",
