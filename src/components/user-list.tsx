@@ -2,23 +2,19 @@ import { Feedback } from '@/components/feedback';
 
 import { TableData, TableHeaders } from '@/components/table-header';
 import { useDeleteUserMutation, useGetUsersQuery } from '@/lib/redux/apiSlice';
+import { UserResponse } from '@/utils/definitions';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useState } from 'react';
 import { Modal } from './modal';
 import { UserForm } from './user-form';
 
-interface User {
-  id: string;
-  name: string;
-  email: string;
-  role: 'admin' | 'user';
-}
+
 
 export function UserList() {
   const [page, setPage] = useState(1)
   const { data: users, isLoading, isError } = useGetUsersQuery()
   const [deleteUser] = useDeleteUserMutation()
-  const [editingUser, setEditingUser] = useState<User | null>(null)
+  const [editingUser, setEditingUser] = useState<UserResponse | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [searchTerm, setSearchTerm] = useState('')
 
@@ -35,14 +31,14 @@ export function UserList() {
   if (isError) return <Feedback msg="Falha ao carregar os dados" />
 
   const filteredUsers = users?.filter(
-    (user: User) =>
+    (user: UserResponse) =>
       user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       user.email.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
 
 
-  const handleEditUser = (user: User) => {
+  const handleEditUser = (user: UserResponse) => {
     setEditingUser(user);
     setIsModalOpen(true);
   };
@@ -52,7 +48,7 @@ export function UserList() {
     setIsModalOpen(false);
   };
 
-  const totalPages = Math.ceil(filteredUsers.length / 10)
+  const totalPages = Math.ceil(filteredUsers?.length / 10)
   return (
     <div>
       <input
