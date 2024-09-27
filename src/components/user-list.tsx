@@ -1,6 +1,6 @@
 import { Feedback } from '@/components/feedback';
-import { TableData } from '@/components/table-data';
-import { TableHeaders } from '@/components/table-header';
+
+import { TableData, TableHeaders } from '@/components/table-header';
 import { useDeleteUserMutation, useGetUsersQuery } from '@/lib/redux/apiSlice';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useState } from 'react';
@@ -77,15 +77,15 @@ export function UserList() {
                     <span className='text-sm text-gray-500'>{user.job}</span>
                   </div>
                 </TableData>
-                <TableData>
+                <TableData hideOnMobile>
                   {user.email}
                 </TableData>
 
-                <TableData>
+                <TableData hideOnMobile>
                   {user.role}
                 </TableData>
                 <TableData>
-                  <div className='flex justify-between text-white gap-2'>
+                  <div className='flex justify-between items-center md:flex-row text-white gap-2'>
                     <button
                       onClick={() => handleEditUser(user)}
                       className="bg-blue-500 text-white px-2 py-1 rounded mr-2"
