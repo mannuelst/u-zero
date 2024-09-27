@@ -5,7 +5,7 @@ import { Modal } from '../components/modal';
 import { UserForm } from '../components/user-form';
 import { UserList } from '../components/user-list';
 
-export function Home() {
+export default function Home() {
   const [showAddForm, setShowAddForm] = useState(false);
 
   return (
@@ -26,5 +26,3 @@ export function Home() {
 
   );
 }
-
-export default Home;

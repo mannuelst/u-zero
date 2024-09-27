@@ -47,8 +47,7 @@ export function UserList() {
     setEditingUser(null);
     setIsModalOpen(false);
   };
-
-  const totalPages = Math.ceil(filteredUsers?.length / 10)
+  const totalPages = Math.ceil((filteredUsers?.length ?? 0) / 10)
   return (
     <div>
       <input
@@ -64,7 +63,7 @@ export function UserList() {
             <TableHeaders />
           </thead>
           <tbody>
-            {filteredUsers?.slice((page - 1) * 10, page * 10)?.map((user: User) => (
+            {filteredUsers?.slice((page - 1) * 10, page * 10)?.map((user: UserResponse) => (
               <tr key={user.id} className="border-b">
 
                 <TableData>
