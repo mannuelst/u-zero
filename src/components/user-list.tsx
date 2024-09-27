@@ -1,14 +1,27 @@
-"use client"
-import UserForm from '@/components/user-form';
+import { Feedback } from '@/components/feedback';
+import { TableData } from '@/components/table-data';
+import { TableHeaders } from '@/components/table-header';
 import { useDeleteUserMutation, useGetUsersQuery } from '@/lib/redux/apiSlice';
-import { ChevronLeft, ChevronRight, Search, Settings, Trash } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useState } from 'react';
+import { Modal } from './modal';
+import { UserForm } from './user-form';
+
+interface User {
+  id: string;
+  name: string;
+  email: string;
+  role: 'admin' | 'user';
+}
+
 export function UserList() {
   const [page, setPage] = useState(1)
-  const { data: users, isLoading, isError } = useGetUsersQuery();
-  const [deleteUser] = useDeleteUserMutation();
-  const [editingUser, setEditingUser] = useState(null);
-  const [searchTerm, setSearchTerm] = useState('');
+  const { data: users, isLoading, isError } = useGetUsersQuery()
+  const [deleteUser] = useDeleteUserMutation()
+  const [editingUser, setEditingUser] = useState<User | null>(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [searchTerm, setSearchTerm] = useState('')
+
 
   function goToPreviousPage() {
     setPage(page - 1)
@@ -18,118 +31,108 @@ export function UserList() {
   }
 
 
-
-  if (isLoading) return <div>Loading..</div>
-  if (isError) return <div>Error loading users</div>
+  if (isLoading) return <Feedback msg="Loading..." />
+  if (isError) return <Feedback msg="Falha ao carregar os dados" />
 
   const filteredUsers = users?.filter(
-    (user) =>
+    (user: User) =>
       user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       user.email.toLowerCase().includes(searchTerm.toLowerCase())
   );
-  const totalPages = Math.ceil(filteredUsers.length / 10)
 
+
+
+  const handleEditUser = (user: User) => {
+    setEditingUser(user);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setEditingUser(null);
+    setIsModalOpen(false);
+  };
+
+  const totalPages = Math.ceil(filteredUsers.length / 10)
   return (
     <div>
-      <div className='flex gap-1 bg-gray-200 w-fit rounded-md'>
+      <input
+        type="text"
+        placeholder="Search users..."
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        className="w-fit p-2 mb-4 border rounded outline-none"
+      />
+      <div>
+        <table className="border  p-4 w-full rounded-md">
+          <thead>
+            <TableHeaders />
+          </thead>
+          <tbody>
+            {filteredUsers?.slice((page - 1) * 10, page * 10)?.map((user: User) => (
+              <tr key={user.id} className="border-b">
 
-        <Search className='size-6 text-red-400' />
-        <input
-          type="text"
-          placeholder="Search users..."
-          className='bg-gray-200'
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-      </div>
-
-
-
-      <table className="border rounded-md p-4 w-full">
-        <thead>
-          <tr className="border-b border bg-gray-300">
-            <th className="py-3 px-4 text-lg text-left">Nome</th>
-            <th className="py-3 px-4 text-lg text-left">Email</th>
-            <th className="py-3 px-4 text-lg text-left">Role</th>
-            <th className="py-3 px-4 text-lg text-left  ">Action</th>
-
-          </tr>
-
-
-        </thead>
-        <tbody>
-          {
-            filteredUsers?.slice((page - 1) * 10, page * 10)?.map((user) => (
-
-              <tr className="border-b border hover:bg-roxo/5" key={user.id}  >
-                <td className="py-3 px-4 ">
+                <TableData>
                   <div className='flex flex-col'>
                     {user.name}
-
                     <span className='text-sm text-gray-500'>{user.job}</span>
                   </div>
-
-
-                </td>
-                <td className="py-3 px-4">
+                </TableData>
+                <TableData>
                   {user.email}
-                </td>
-                <td className="py-3 px-4 text-left ">{user.role}</td>
-                <td className="py-3 px-4 text-center ">
-                  <div className='flex text-white gap-2'>
+                </TableData>
 
+                <TableData>
+                  {user.role}
+                </TableData>
+                <TableData>
+                  <div className='flex justify-between text-white gap-2'>
                     <button
-
-                      onClick={() => setEditingUser(user)}><Settings className='text-blue-500' /></button>
+                      onClick={() => handleEditUser(user)}
+                      className="bg-blue-500 text-white px-2 py-1 rounded mr-2"
+                    >
+                      Edit
+                    </button>
                     <button
-
                       onClick={() => {
-                        deleteUser(user.id);
-                      }}><Trash className='text-red-500 ' /></button>
+                        if (window.confirm('Are you sure you want to delete this user?')) {
+                          deleteUser(user.id);
+                        }
+                      }}
+                      className="bg-red-500 text-white px-2 py-1 rounded"
+                    >
+                      Delete
+                    </button>
                   </div>
-                </td>
-
-
+                </TableData>
               </tr>
-            )
-
-            )}
-
-        </tbody>
+            ))}
+          </tbody>
+        </table>
         <tfoot>
-          <tr>
+          <tr className='w-full'>
 
-            <td className="py-3 px-4 text-sm text-zinc-500" colSpan={2}>
-              Total {users?.length} Usuários
-            </td>
-            <td className="py-3 px-4 text-sm text-zinc-500 text-right" colSpan={3}>
-              <div className="inline-flex items-center gap-8">
+            <td className="text-sm text-zinc-500" colSpan={4}>
+              <div className="flex items-center justify-center gap-1.5">
 
-                <span>Página {page} de {totalPages}</span>
-                <div className="flex gap-1.5">
+                <button onClick={goToPreviousPage} disabled={page === 1}
+                  className=" border border-white/10 rounded p-1.5">
+                  <ChevronLeft className="size-5" />
+                </button>
+                <button onClick={goToNextPage} disabled={page === totalPages} className=" border border-white/10 rounded p-1.5">
+                  <ChevronRight className="size-5" />
+                </button>
 
-                  <button onClick={goToPreviousPage} disabled={page === 1}
-                    className=" border border-white/10 rounded p-1.5">
-                    <ChevronLeft className="size-5" />
-                  </button>
-                  <button onClick={goToNextPage} disabled={page === totalPages} className=" border border-white/10 rounded p-1.5">
-                    <ChevronRight className="size-5" />
-                  </button>
-
-                </div>
               </div>
 
             </td>
           </tr>
 
         </tfoot>
-      </table>
-      {
-        editingUser && (
-          <UserForm user={editingUser} action={() => setEditingUser(null)} />
-        )
-      }
-    </div >
-  );
-};
 
+      </div>
+      <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
+        <UserForm user={editingUser} onClose={handleCloseModal} />
+      </Modal>
+    </div>
+  );
+}

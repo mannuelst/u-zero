@@ -1,34 +1,26 @@
-"use client"
+import { CircleX } from 'lucide-react';
+import { ReactNode } from 'react';
 
-import { CancelSquareIcon } from "hugeicons-react"
-import { ReactNode } from "react"
-
-type Props = {
-    isOpen: boolean,
-    children: ReactNode,
-    onClose: () => void
+interface ModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  children: ReactNode;
 }
-export function Modal({ isOpen, onClose, children }: Props) {
-    if (!isOpen) return null
 
-    const handleClose = (e) => {
-        if (e.target.id === "wrapper") onClose()
-    }
+export function Modal({ isOpen, onClose, children }: ModalProps) {
+  if (!isOpen) return null;
 
-    return (
-        <div
-            id="wrapper"
-            className="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex items-center justify-center"
-            onClick={handleClose}
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+      <div className="bg-white p-6 rounded-lg relative">
+        <button
+          className="absolute top-2 right-2 text-2xl font-bold"
+          onClick={onClose}
         >
-
-            <div className="w-auto bg-white p-2 rounded-xl flex flex-col items-center justify-center">
-                <button className="text-white text-xl place-self-end hover:bg-roxo/20 rounded-lg" onClick={onClose}>
-
-                    <CancelSquareIcon className="size-6 text-roxo" />
-                </button>
-                <div className="bg-white p-2 rounded-xl">{children}</div>
-            </div>
-        </div>
-    )
+          <CircleX />
+        </button>
+        {children}
+      </div>
+    </div>
+  );
 }

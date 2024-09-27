@@ -1,26 +1,28 @@
-"use client"
+import { InputForm } from '@/components/input-form';
 import { useAddUserMutation, useUpdateUserMutation } from '@/lib/redux/apiSlice';
-import { User, userSchema } from '@/utils/definitions';
-import { CircleX, Send } from 'lucide-react';
-import { useState } from 'react';
-
+import { UserFormData, UserResponse, userSchema } from '@/utils/definitions';
+import React, { useState } from 'react';
 import { z } from 'zod';
-type FormProps = {
-  user: User | null,
-  action: () => void
+
+
+interface UserFormProps {
+  user: UserResponse | null;
+  onClose: () => void;
 }
-export default function UserForm({ user = null, action }: Readonly<FormProps>) {
+
+export function UserForm({ user = null, onClose }: UserFormProps) {
   const [addUser] = useAddUserMutation();
   const [updateUser] = useUpdateUserMutation();
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState<Partial<UserFormData>>({});
 
-  const [formData, setFormData] = useState<User>({
+  const [formData, setFormData] = useState<UserFormData>({
     name: user?.name || '',
     email: user?.email || '',
+    job: user?.job || '',
     role: user?.role || 'user',
   });
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       userSchema.parse(formData);
@@ -29,62 +31,69 @@ export default function UserForm({ user = null, action }: Readonly<FormProps>) {
       } else {
         await addUser(formData);
       }
-      action();
+      onClose();
     } catch (error) {
       if (error instanceof z.ZodError) {
-        setErrors(error.formErrors.fieldErrors);
+        setErrors(error.formErrors.fieldErrors as Partial<UserFormData>);
       }
     }
   };
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="name">Name:</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-        />
-        {errors.name && <span>{errors.name}</span>}
-      </div>
-      <div>
-        <label htmlFor="email">Email:</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-        />
-        {errors.email && <span>{errors.email}</span>}
-      </div>
-      <div>
-        <label htmlFor="role">Role:</label>
-        <select
-          id="role"
-          name="role"
-          value={formData.role}
-          onChange={handleChange}
-        >
-          <option value="user">User</option>
-          <option value="admin">Admin</option>
-        </select>
-        {errors.role && <span>{errors.role}</span>}
-      </div>
-      <div className='flex justify-between'>
+  return (<form onSubmit={handleSubmit} className="space-y-4">
+    <h2 className="text-xl font-bold mb-4">{user ? 'Edit User' : 'Add User'}</h2>
 
-        <button
-          className='bg-red'
-          type="submit">{user ? 'Update' : 'Add'} <Send className='text-blue-500' /> </button>
-        <button type="button" onClick={action}> <CircleX className='text-blue-500' /> </button>
-      </div>
-    </form>
-  )
+    <InputForm
+      label="Name"
+      name="name"
+      type="text"
+      value={formData.name}
+      onChange={handleChange}
+      error={errors.name}
+    />
+
+    <InputForm
+      label="Email"
+      name="email"
+      type="email"
+      value={formData.email}
+      onChange={handleChange}
+      error={errors.email}
+    />
+
+    <InputForm
+      label="Profissão"
+      name="job"
+      type="text"
+      value={formData.job}
+      onChange={handleChange}
+      error={errors.job}
+    />
+
+    <InputForm
+      label="Role"
+      name="role"
+      type="select"
+      value={formData.role}
+      onChange={handleChange}
+      error={errors.role}
+      options={[
+        { value: 'user', label: 'User' },
+        { value: 'admin', label: 'Admin' },
+      ]}
+    />
+
+    <div className="flex justify-between mt-6">
+      <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">
+        {user ? 'Update' : 'ADD'} User
+      </button>
+      <button type="button" onClick={onClose} className="bg-gray-300 px-4 py-2 rounded">
+        Cancel
+      </button>
+    </div>
+  </form>
+  );
 }

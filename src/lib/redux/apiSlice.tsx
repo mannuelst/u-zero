@@ -1,3 +1,4 @@
+import { UserResponse } from '@/utils/definitions';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const apiSlice = createApi({
@@ -5,12 +6,12 @@ export const apiSlice = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3333" }),
   tagTypes: ["User"],
   endpoints: (builder) => ({
-    getUsers: builder.query({
+    getUsers: builder.query<UserResponse[], void>({
       query: () => "users",
       providesTags: ["User"],
 
     }),
-    addUser: builder.mutation({
+    addUser: builder.mutation<UserResponse, Omit<UserResponse, 'id'>>({
       query: (user) => ({
         url: "users",
         method: "POST",
@@ -18,7 +19,7 @@ export const apiSlice = createApi({
       }),
       invalidatesTags: ["User"],
     }),
-    updateUser: builder.mutation({
+    updateUser: builder.mutation<UserResponse, UserResponse>({
       query: (user) => ({
         url: `users/${user.id}`,
         method: "PUT",
@@ -26,7 +27,7 @@ export const apiSlice = createApi({
       }),
       invalidatesTags: ["User"],
     }),
-    deleteUser: builder.mutation({
+    deleteUser: builder.mutation<void, string>({
       query: (id) => ({
         url: `users/${id}`,
         method: "DELETE",
@@ -42,3 +43,5 @@ export const {
   useUpdateUserMutation,
   useAddUserMutation
 } = apiSlice
+
+

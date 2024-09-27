@@ -1,17 +1,10 @@
 {
   "users": [
     {
-      "id": "3b9f",
-      "job": "Analista",
-      "name": "Carlos Oliveira",
-      "email": "carlos.o@email.com",
-      "role": "user"
-    },
-    {
       "id": "2e4d",
-      "job": "Gerente",
-      "name": "Ana Santos",
-      "email": "ana.s@email.com",
+      "name": "Jane Smith",
+      "email": "jane@example.com",
+      "job": "Teste",
       "role": "admin"
     },
     {
@@ -113,13 +106,6 @@
       "role": "user"
     },
     {
-      "id": "7n9o",
-      "job": "Recepcionista",
-      "name": "Amanda Castro",
-      "email": "amanda.c@email.com",
-      "role": "user"
-    },
-    {
       "id": "2p4q",
       "job": "Consultor",
       "name": "Daniel Teixeira",
@@ -132,6 +118,13 @@
       "name": "Larissa Santos",
       "email": "larissa.s@email.com",
       "role": "admin"
+    },
+    {
+      "id": "c933",
+      "name": "Outro",
+      "email": "email@outr.sm",
+      "job": "Outro",
+      "role": "user"
     }
   ]
 }
