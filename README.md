@@ -1,5 +1,5 @@
 # U-Zero
-U-Zero é uma aplicação de gerenciamento de usuários desenvolvida com Next.js, React e Redux Toolkit.
+[U-zero](https://u-zero.vercel.app/) é uma aplicação de gerenciamento de usuários desenvolvida com Next.js, React e Redux Toolkit.
 
 ## Requisitos
 
@@ -24,11 +24,6 @@ Para iniciar o projeto em modo de desenvolvimento:
 ```
 npm run dev
 ```
-
-Isso iniciará:
-- O servidor de API mock com json-server na porta 3333
-- O servidor de desenvolvimento Next.js
-
 Acesse `http://localhost:3000` no seu navegador para ver a aplicação.
 
 ## Scripts disponíveis
